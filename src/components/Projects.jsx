@@ -8,7 +8,7 @@ function Modal({ project, onClose }) {
 
   useEffect(() => {
     gsap.fromTo(boxRef.current,
-      { opacity: 0, y: 40, scale: 0.96 },
+      { opacity: 1, y: 40, scale: 0.96 },
       { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power4.out' }
     )
     const onKey = (e) => e.key === 'Escape' && handleClose()
@@ -121,19 +121,34 @@ gsap.from('#pj-title', {
     start: 'top 85%'
   }
 })
-
-  gsap.from('.proj-card', {
-  opacity: 1,
-  y: 60,
-  scale: 0.95,
-  duration: 0.85,
-  stagger: 0.12,
-  ease: 'power4.out',
-  scrollTrigger: {
-    trigger: '#proj-grid',
-    start: 'top 82%'
+gsap.fromTo('.proj-card',
+  { opacity: 0, y: 60, scale: 0.95 },
+  {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    duration: 0.85,
+    stagger: 0.12,
+    ease: 'power4.out',
+    scrollTrigger: {
+      trigger: '#proj-grid',
+      start: 'top 85%',
+      toggleActions: 'play none none none'
+    }
   }
-})
+)
+//   gsap.from('.proj-card', {
+//   opacity: 1,
+//   y: 60,
+//   scale: 0.95,
+//   duration: 0.85,
+//   stagger: 0.12,
+//   ease: 'power4.out',
+//   scrollTrigger: {
+//     trigger: '#proj-grid',
+//     start: 'top 82%'
+//   }
+// })
   }, [])
 
   return (
